@@ -47,10 +47,9 @@ void Engine::run()
 		float dtAsSeconds = dt.asSeconds();
 
 		// Call each part of the game loop in turn
-		/*
 		input();
 		update(dtAsSeconds);
 		draw();
-		*/
+		
 	}
 }
