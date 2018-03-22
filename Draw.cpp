@@ -3,50 +3,60 @@
 
 void Engine::draw()
 {
-	//Erase the last frame
+	// Erase the last frame
 	m_Window.clear(Color::White);
 
-	//Single screen
-	if (!m_Splitscreen)
+	// Single screen
+	if (!m_SplitScreen)
 	{
-		//Switch to the background view
+		// Switch to the background view
 		m_Window.setView(m_BGMainView);
-		//Draw the background
+		// Draw the background
 		m_Window.draw(m_BackgroundSprite);
-		//Set main view
+		// Set main view
 		m_Window.setView(m_MainView);
-		//TODO: Draw all the stuff
+		// TODO: Draw all the stuff
 
-	}//End of single screen
-	//Splitscreen
+		// Draw thomas and bob
+		m_Window.draw(m_Thomas.getSprite());
+		m_Window.draw(m_Bob.getSprite());
+	} // end single screen
+	  // split screen
 	else
 	{
-		//Draw thomas' side of the screen
-		//Switch to the background view
+		// Draw Thomas' side of the screen
+		// Switch to the background view
 		m_Window.setView(m_BGLeftView);
-		//Draw the background
+		// Draw background
 		m_Window.draw(m_BackgroundSprite);
-		//Switch to the main view for left
+		// Switch to the main view for left
 		m_Window.setView(m_LeftView);
-		//TODO: Draw all the stuff
+		// TODO: Draw all the stuff
+		// Draw thomas and bob
+		m_Window.draw(m_Thomas.getSprite());
+		m_Window.draw(m_Bob.getSprite());
 
-		//Draw Bob's side of the screen
-		//Switch to the background view
+
+		// Draw Bob's side of the screen
+		// Switch to the background view
 		m_Window.setView(m_BGRightView);
-		//Draw the background
+		// Draw background
 		m_Window.draw(m_BackgroundSprite);
-		//Switch to the main view for left
+		// Switch to the main view for right
 		m_Window.setView(m_RightView);
-		//TODO: Draw all the stuff
+		// TODO: Draw all the stuff
+		// Draw thomas and bob
+		m_Window.draw(m_Thomas.getSprite());
+		m_Window.draw(m_Bob.getSprite());
 
-	}//End split screen
+	} // end split screen
 
-	// Draw HUD
-	// Switch to HUD view
+	  // Draw HUD
+	  // Switch to hud view
 	m_Window.setView(m_HudView);
-	//TODO draw hud
+	// TODO: Draw hud
 
-	//Show Everything we have just drawn
+	// Show everything we have just drawn
 	m_Window.display();
 
-} //End of draw function
+} // end of draw function

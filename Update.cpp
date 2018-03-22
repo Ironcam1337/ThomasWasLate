@@ -7,8 +7,17 @@ using namespace sf;
 
 void Engine::update(float dtAsSeconds)
 {
+	if (m_NewLevelRequired)
+	{
+		loadLevel();
+	}
+
 	if (m_Playing)
 	{
+		// Update Thomas and Bob
+		m_Thomas.update(dtAsSeconds);
+		m_Bob.update(dtAsSeconds);
+
 		// Count down the time the player has left
 		m_TimeRemaining -= dtAsSeconds;
 
@@ -18,7 +27,24 @@ void Engine::update(float dtAsSeconds)
 			m_NewLevelRequired = true;
 		}
 
-
 	} // end of if playing
 
-}//End of update function
+	  // Set the view around the appropriate character
+	if (m_SplitScreen)
+	{
+		m_LeftView.setCenter(m_Thomas.getCenter());
+		m_RightView.setCenter(m_Bob.getCenter());
+	}
+	else
+	{
+		if (m_Character1) // if we should focus on thomas...
+		{
+			m_MainView.setCenter(m_Thomas.getCenter());
+		}
+		else
+		{
+			m_MainView.setCenter(m_Bob.getCenter());
+		}
+	}
+
+} // end of update function
