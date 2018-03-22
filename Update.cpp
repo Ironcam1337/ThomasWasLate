@@ -24,7 +24,7 @@ void Engine::update(float dtAsSeconds)
 			// New level required
 			m_NewLevelRequired = true;
 
-			// TODO: add sound for reaching goal
+			// TODO: Play sound for reaching goal
 		}
 		else
 		{
@@ -32,12 +32,11 @@ void Engine::update(float dtAsSeconds)
 			detectCollisions(m_Bob);
 		}
 
-		// let bob and thomas jump on each others heads
+		// Let bob and thomas jump on each others heads
 		if (m_Bob.getFeet().intersects(m_Thomas.getHead()))
 		{
 			m_Bob.stopFalling(m_Thomas.getHead().top);
 		}
-
 		if (m_Thomas.getFeet().intersects(m_Bob.getHead()))
 		{
 			m_Thomas.stopFalling(m_Bob.getHead().top);

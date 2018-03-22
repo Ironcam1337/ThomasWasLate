@@ -26,4 +26,4 @@ public:
 	Vector2i getLevelSize();
 	int getCurrentLevel();
 
-}; // end class LevelManager#pragma once
+}; // end class LevelManager

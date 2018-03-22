@@ -10,7 +10,7 @@ Bob::Bob()
 
 	m_JumpDuration = 0.25f;
 
-} // end function Bob()
+} // end functio Thomas()
 
   //========================================================================
 

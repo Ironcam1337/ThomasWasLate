@@ -3,53 +3,51 @@
 
 void PlayableCharacter::spawn(Vector2f startPosition, float gravity)
 {
-	// Place the player at the start point
+	// Place the player at the starting point
 	m_Position.x = startPosition.x;
 	m_Position.y = startPosition.y;
 
-	//initialise the gravity
+	// Initialize the gravity
 	m_Gravity = gravity;
 
-	//move the sprite to the position
+	// Move the sprite to the position
 	m_Sprite.setPosition(m_Position);
 
+} // end spawn()
 
-}// End spawn()
-
-void PlayableCharacter::update(float elapsedTime) //in fractions of a second
+void PlayableCharacter::update(float elapsedTime) // in fractions of a second
 {
-	// Check if we should be moving left or right
+	// check if we should be moving left or right
 	if (m_RightPressed)
 	{
 		m_Position.x += m_Speed * elapsedTime;
 	}
-
-	if(m_LeftPressed)
+	if (m_LeftPressed)
 	{
 		m_Position.x -= m_Speed * elapsedTime;
 	}
 
-	//Handle jumping
+	// Handle jumping
 	if (m_IsJumping)
 	{
-		//Update how long the jump has been going
+		// Update how long the jump has been going
 		m_TimeThisJump += elapsedTime;
 
-		//if we are still jumping upwards
+		// If we are still jumping upwards...
 		if (m_TimeThisJump < m_JumpDuration)
 		{
 			// Move up at twice the speed of gravity
 			m_Position.y -= m_Gravity * 2 * elapsedTime;
 		}
-		//if jump duration has ended...
+		// If jump duration has ended...
 		else
 		{
 			m_IsJumping = false;
 			m_IsFalling = true;
 		}
-	}//end if(m_isjumping)
+	} // end if(m_isJumping)
 
-	//Apply gravity
+	  // Apply gravity
 	if (m_IsFalling)
 	{
 		m_Position.y += m_Gravity * elapsedTime;
@@ -85,8 +83,7 @@ void PlayableCharacter::update(float elapsedTime) //in fractions of a second
 	// Move the sprite into position
 	m_Sprite.setPosition(m_Position);
 
-
-}//end update()
+} // end update()
 
 FloatRect PlayableCharacter::getPosition()
 {
@@ -97,7 +94,8 @@ Vector2f PlayableCharacter::getCenter()
 {
 	return Vector2f(
 		m_Position.x + m_Sprite.getGlobalBounds().width / 2,
-		m_Position.y + m_Sprite.getGlobalBounds().height / 2);
+		m_Position.y + m_Sprite.getGlobalBounds().height / 2
+		);
 }
 
 FloatRect PlayableCharacter::getFeet()
@@ -110,14 +108,14 @@ FloatRect PlayableCharacter::getHead()
 	return m_Head;
 }
 
-FloatRect PlayableCharacter::getRight()
-{
-	return m_Right;
-}
-
 FloatRect PlayableCharacter::getLeft()
 {
 	return m_Left;
+}
+
+FloatRect PlayableCharacter::getRight()
+{
+	return m_Right;
 }
 
 Sprite PlayableCharacter::getSprite()

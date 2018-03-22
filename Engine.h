@@ -79,8 +79,8 @@ private:
 	// Load a new level
 	void loadLevel();
 
-	// Detect collision
-	// Polymorphism
+	// detect collision
+	// POLYMORPHISM
 	bool detectCollisions(PlayableCharacter& character);
 
 public:

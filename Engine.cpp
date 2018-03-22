@@ -4,24 +4,24 @@
 Engine::Engine()
 {
 	// Get the screen resolution
-	// and create an sfml window and view
+	// and create an SFML window and View
 	Vector2f resolution;
 	resolution.x = VideoMode::getDesktopMode().width;
 	resolution.y = VideoMode::getDesktopMode().height;
 
 	m_Window.create(VideoMode(resolution.x, resolution.y),
-					"Thomas was late",
-					Style::Fullscreen);
+		"Thomas Was Late",
+		Style::Fullscreen);
 
-	//initialise the fullscreen view
+	// Initialise the fullscreen view
 	m_MainView.setSize(resolution);
 	m_HudView.reset(FloatRect(0, 0, resolution.x, resolution.y));
 
-	//initialise split screen view
+	// Initialise split screen view
 	m_LeftView.setViewport(FloatRect(0.001f, 0.001f, 0.498f, 0.998f));
 	m_RightView.setViewport(FloatRect(0.5f, 0.001f, 0.498f, 0.998f));
 
-	//split screen backgrounds
+	// split screen backgrounds
 	m_BGLeftView.setViewport(FloatRect(0.001f, 0.001f, 0.498f, 0.998f));
 	m_BGRightView.setViewport(FloatRect(0.5f, 0.001f, 0.498f, 0.998f));
 
@@ -31,9 +31,8 @@ Engine::Engine()
 	// Associate the sprite with the texture
 	m_BackgroundSprite.setTexture(m_BackgroundTexture);
 
-	// Load the texture for the background vertex array
-	m_TextureTiles = TextureHolder::GetTexture("graphics/tile_sheet.png");
-
+	// Load the texture for the backgorund vertex array
+	m_TextureTiles = TextureHolder::GetTexture("graphics/tiles_sheet.png");
 }
 
 void Engine::run()
@@ -53,6 +52,5 @@ void Engine::run()
 		input();
 		update(dtAsSeconds);
 		draw();
-		
 	}
 }
