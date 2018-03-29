@@ -58,11 +58,11 @@ bool Engine::detectCollisions(PlayableCharacter& character)
 					// Play a sound based on water or lava death
 				if (m_Arraylevel[y][x] == 2) //fire
 				{
-					// TODO add sound
+					m_SM.playFallInFire();
 				}
 				else //water
 				{
-					// TODO add sound
+					m_SM.playFallInWater();
 				} // end block collision test with fire/water
 			} //end water/lava test
 
